@@ -1,0 +1,25 @@
+{
+  "name": "mws-project-2",
+  "version": "1.0.0",
+  "description": "Project 2 for MWS",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "gulp-htmlmin": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anacidre/mws-project-2.git"
+  },
+  "author": "Ana Cidre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anacidre/mws-project-2/issues"
+  },
+  "homepage": "https://github.com/anacidre/mws-project-2#readme"
+}
