@@ -39,7 +39,6 @@ gulp.task('sass', function () {
         .pipe(browserSync.reload({
             stream: true
         }))
-        .pipe(gulp.dest('app/css'))
 
 });
 
@@ -48,7 +47,6 @@ gulp.task('js', () =>
         .pipe(babel({
             presets: ['@babel/env']
         }))
-        .pipe(gulp.dest('dist'))
 );
 
 // Watchers
