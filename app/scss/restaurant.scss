@@ -103,7 +103,7 @@ main {
       grid-template-columns: 1fr 1fr;
     }
     #restaurant-name {
-      color: orange;
+      color: indianred;
       font-size: 20pt;
       font-weight: 200;
       text-transform: uppercase;
@@ -179,7 +179,7 @@ main {
     border-top: 1px solid $border-color;
     padding: 5vw 5vw;
     h3 {
-      color: orange;
+      color: indianred;
       font-size: 20pt;
       font-weight: 300;
       padding: 0 0 30px;
@@ -218,7 +218,7 @@ main {
         .reviewRating {
           grid-column: 1 / 2;
           justify-self: start;
-          color: orange;
+          color: indianred;
           padding: 10px 20px 0;
           text-transform: uppercase;
           font-weight: bold;
@@ -273,7 +273,7 @@ main {
         margin: 0;
         text-align: justify;
         padding: 10px 20px;
-        color: orange;
+        color: indianred;
         font-size: 10pt;
         line-height: 1.5em;
         font-family: $first-font;
@@ -310,7 +310,7 @@ main {
         text-align: center;
         padding: 10px 20px;
         #review-submit {
-          background-color: orange;
+          background-color: indianred;
           margin: 0;
           text-align: center;
           padding: 10px 35px;
@@ -339,7 +339,7 @@ footer {
 
 // a tags
 a {
-  color: orange;
+  color: indianred;
   text-decoration: none;
   &:hover,
   &:focus {

@@ -172,7 +172,7 @@ main {
                     grid-column-start: 2;
                 }
                 a {
-                    background-color: orange;
+                    background-color: indianred;
                     color: white;
                     font-size: 12pt;
                     margin: 15px 0 0;
@@ -200,7 +200,7 @@ footer {
 
 // a tags
 a {
-    color: orange;
+    color: white;
     text-decoration: none;
     &:hover,
     &:focus {
