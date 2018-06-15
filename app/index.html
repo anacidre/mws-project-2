@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -9,6 +9,8 @@
   <title>Restaurant Reviews</title>
   <meta name="description" content="This site contains restaurant reviews">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/restaurant.css">
+
   <link rel="manifest" href="/manifest.json">
   <link rel="preload" href="http://localhost:1337/restaurants" as="fetch">
   <link rel="preload" href="js/dbhelper.js" as="script">
@@ -32,10 +34,10 @@
     <section>
       <div class="filter-options">
         <h2>Filter Results</h2>
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="neighborhoods">
           <option value="all" aria-label="All Neighborhoods">All Neighborhoods</option>
         </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="cuisines">
           <option value="all" aria-label="All Cuisines">All Cuisines</option>
         </select>
       </div>
@@ -43,9 +45,24 @@
     </section>
   </main>
 
+  <script>
+      if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+              navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                  // Registration was successful
+                  console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              }, function(err) {
+                  // registration failed :(
+                  console.log('ServiceWorker registration failed: ', err);
+              });
+          });
+      }
+  </script>
+  <!--build:js js/main.min.js -->
   <script src="js/dbhelper.js"></script>
   <script src="js/main.js"></script>
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXDgWJpodKO7pJflsM-VpgP1CJ6tMFuLE&callback=initMap"></script>
+  <!-- endbuild -->
 
 
   <footer id="footer">
