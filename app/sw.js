@@ -27,7 +27,6 @@ self.addEventListener('install', function(event) {
                 'img/8.jpg',
                 'img/9.jpg',
                 'img/undefined.jpg',
-                'img/icons/fav-icon-o.png',
                 'img/icons/fav-icon.png'
             ]);
         })
