@@ -1,6 +1,7 @@
 let restaurant;
 var map;
 
+
 /**
  * Initialize Google map, called from HTML.
  */
@@ -66,32 +67,6 @@ fetchRestaurantFromURL = (callback) => {
     }
 }
 
-/**
- * Get reviews from page URL.
- */
-fetchReviewsFromURL = (callback) => {
-    if (self.reviews) { // reviews already fetched!
-        callback(null, self.reviews)
-        return;
-    }
-    const id = getParameterByName('id');
-    if (!id) { // no id found in URL
-        error = 'No restaurant id in URL'
-        callback(error, null);
-    } else {
-        DBHelper.fetchReviewsById(id, (error, reviews) => {
-            self.reviews = reviews;
-            if (!reviews) {
-                console.error(error);
-                return;
-            }
-            // fill reviews
-            fillReviewsHTML();
-            // callback(null, reviews);
-            return reviews;
-        });
-    }
-}
 
 /**
  * Create restaurant HTML and add it to the webpage
@@ -156,7 +131,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
         fillRestaurantHoursHTML();
     }
     // fetch reviews
-    fetchReviewsFromURL();
+    fillReviewsHTML();
 }
 
 /**
@@ -256,53 +231,3 @@ getParameterByName = (name, url) => {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-/**
- * Submit review.
- */
-uploadReview = (restaurant = self.restaurant) => {
-    const id = restaurant.id;
-    const name = document.getElementById("review-name").value;
-    const rating = document.getElementById("review-rating").value;
-    const comment = document.getElementById("review-comment").value;
-
-    // Put all the parameters together and ready to post
-    let review_info = {
-        restaurant_id: id,
-        name: name,
-        rating: rating,
-        comments: comment,
-    }
-    // https://stackoverflow.com/questions/29775797/fetch-post-json-data
-    // https://github.com/github/fetch/issues/263
-    fetch(`${DBHelper.DATABASE_DOMAIN}/reviews/`, {
-        method: 'post',
-        body: JSON.stringify(review_info)
-    })
-        .then(res => res.json())
-        .then(res => {
-            console.log(res);
-            console.log('Review submission was successful!');
-            alert('Review submission was successful!');
-        })
-        .catch(error => {
-            console.log(error);
-            console.log('Network error when submitting your review. We will automatically send your review when online');
-            alert('There was an error when submitting your review. We will automatically send your review when online');
-            DBHelper.insertReviewsToIDBOffline(review_info);
-        });
-
-    // reload the doc and we should see it
-    setTimeout(function () {
-        window.location.reload();
-    }, 1000);
-
-    return false;
-}
-
-
-/**
- * Check if offline reviews in database
- */
-(checkReviewsOffline = () => {
-    DBHelper.insertOfflineReviews();
-})();
